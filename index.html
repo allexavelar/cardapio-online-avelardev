@@ -5,10 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante - Bem vindo!</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/animate.css">
     <link rel="stylesheet" href="./css/main.css">
     <script src="https://kit.fontawesome.com/56aa1a61b5.js" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
+
+    <div class="container-mensagens" id="container-mensagens">
+
+    </div>
+
+    <a class="botao-carrinho hidden" onclick="cardapio.metodos.abrirCarrinho(true)">
+        <div class="badge-total-carrinho">0</div>
+        <i class="fa fa-shopping-bag"></i>
+    </a>
+
     <section class="header">
         <div class="container">
             <nav class="navbar navbar-expand-lg pl-0 pr-0">
@@ -27,9 +40,10 @@
                         <li class="nav-item"><a href="#cardapio" class="nav-link"><b>Cardapio</b></a></li>
                         <li class="nav-item"><a href="#depoimentos" class="nav-link"><b>Depoimentos</b></a></li>
                     </ul>
-                    <a class="btn btn-white btn-icon"> 
+                    <a class="btn btn-white btn-icon" onclick="cardapio.metodos.abrirCarrinho(true)"> 
                         Meu carrinho <span class="icon"> 
-                            <i class="fa-solid fa-bag-shopping"></i>
+                        <div class=" container-total-carrinho badge-total-carrinho hidden">0</div>
+                        <i class="fa-solid fa-bag-shopping"></i>
                          </span> 
                     </a>
                 </div>
@@ -145,7 +159,7 @@
                     </h1>
                 </div>
                     <div class="col-12 container-menu">
-                        <a id="menu-burguers" class="btn btn-white btn-sm mr-3 active" onclick="cardapio.metodos.obterItensCardapio('burgers')">
+                        <a id="menu-burgers" class="btn btn-white btn-sm mr-3 active" onclick="cardapio.metodos.obterItensCardapio('burgers')">
                             <i class="fas fa-hamburger"></i>&nbsp; Burgers
                         </a>
                         <a id="menu-pizzas" class="btn btn-white btn-sm mr-3" onclick="cardapio.metodos.obterItensCardapio('pizzas')">
@@ -167,9 +181,6 @@
 
                     <div class="col-12">
                         <div class="row" id="itensCardapio">
-
-
-
 
                         </div>
                     </div>
@@ -331,10 +342,11 @@
         </div>
     </footer>
 
-    <div class="modal-full hidden" id="modal-carrinho">
+    <div class="modal-full hidden" id="modalCarrinho">
         <div class="m-header">
             <div class="container">
-                <a  class="btn btn-white btn-sm float-right"> Fechar</a>
+                <a  class="btn btn-white btn-sm float-right"  onclick="cardapio.metodos.abrirCarrinho(false)"> Fechar</a>
+
                 <div class="etapas">
                     <div class="etapa etapa1 active">1</div>
                     <div class="etapa etapa2">2</div>
@@ -348,22 +360,6 @@
         <div class="m-body">
             <div class="container">
                 <div id="itensCarrinho" class="row mr-0 ml-0 hidden">
-                    <div class="col-12 item-carrinho">
-                        <div class="img-produto">
-                            <img src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg" alt="">
-                        </div>
-                        <div class="dados-produto">
-                            <p><b class="title-produto">Nome do produto</b></p>
-                            <p><b class="price-produto">R$ 149.90</b></p>
-                        </div>
-                            <div class="add-carrinho">
-                                        <span class="btn-menos"><i class="fas fa-minus"></i></span>
-                                        <span class="add-numero-itens">0</span>
-                                        <span class="btn-mais"><i class="fas fa-plus"></i></span>
-                                        <span class="btn btn-remove"><i class="fa fa-times"></i></span>
-                                    </div>
-
-                    </div>
                     <div class="col-12 item-carrinho">
                         <div class="img-produto">
                             <img src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg" alt="">
@@ -464,7 +460,7 @@
                     </div>
                 </div>
 
-                <div id="resumoCarrinho" class="row mr-0 ml-0 ">
+                <div id="resumoCarrinho" class="row mr-0 ml-0 hidden">
                     <div class="col-12">
                         <p class="title-carrinho mt-4">
                             <b>Items do pedido:</b>
@@ -531,7 +527,7 @@
                 </div>
                 <a  class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
                 <a  class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar pedido</a>
-                <a  class="btn btn-yellow float-right hidden" id="btnEtapaResuno">Enviar pedido</a>
+                <a  class="btn btn-yellow float-right hidden" id="btnEtapaResumo">Enviar pedido</a>
 
                 <a  class="btn btn-white float-right hidden" id="btnVoltar">Voltar</a>
             </div>
