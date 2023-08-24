@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/animate.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/responsivo.css">
     <script src="https://kit.fontawesome.com/56aa1a61b5.js" crossorigin="anonymous"></script>
 
 </head>
@@ -66,7 +67,7 @@
                                 Ver cardápio
                             </a>
 
-                            <a  class="btn btn-white btn-icon-left mt-4 ">
+                            <a href="#" class="btn btn-white btn-icon-left mt-4" id="btnLigar">
                                 <span class="icon-left">
                                     <i class="fa-solid fa-phone-flip"></i>
                                 </span>
@@ -78,7 +79,7 @@
                     </div>
                     <a href="" class="btn btn-sm btn-white btn-social mt-4 mr-3"><i class="fab fa-instagram"></i></a>
                     <a href="" class="btn btn-sm btn-white btn-social mt-4 mr-3"><i class="fab fa-facebook-f"></i></a>
-                    <a href="" class="btn btn-sm btn-white btn-social mt-4"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" id="btnWhatsApp" target="_blank" class="btn btn-sm btn-white btn-social mt-4"><i class="fab fa-whatsapp"></i></a>
                 </div>
 
                 <div class="col-6">
@@ -283,9 +284,9 @@
                                                     </p>
                                                 </div>
                             </div>  
-                                <a  class="btn btn-sm btn-white btn-social active mr-3">1</a>
-                                <a  class="btn btn-sm btn-white btn-social mr-auto">2</a>
-                                <a  class="btn btn-sm btn-white btn-social ">3</a>
+                                <a id="btnDepoimento-1" class="btn btn-sm btn-white btn-social active mr-3" onclick="cardapio.metodos.abrirDepoimento(1)">1</a>
+                                <a id="btnDepoimento-2" class="btn btn-sm btn-white btn-social mr-auto" onclick="cardapio.metodos.abrirDepoimento(2)">2</a>
+                                <a id="btnDepoimento-3" class="btn btn-sm btn-white btn-social" onclick="cardapio.metodos.abrirDepoimento(3)">3</a>
                         </div>
                     </div>
                 </div>
@@ -309,7 +310,9 @@
                                             <br>
                                             Reserve sua data de forma simples e rápida.
                                         </p>
-                                        <a  class="btn btn-yellow mt-4">Fazer reserva</a>
+                                        <a  class="btn btn-yellow mt-4" href="#" id="btnReserva" target="_blank">
+                                            Fazer reserva
+                                        </a>
                             </div>
                             <div class="col-5">
                                 <div class="card-reserva"></div>
@@ -334,9 +337,12 @@
                     </p>
                 </div>
                 <div class="col-3 container-redes-footer">
-                    <a href="" class="btn btn-sm btn-white btn-social mr-3"><i class="fab fa-instagram"></i></a>
+                    <a  href="#" target="_blank" class="btn btn-sm btn-white btn-social mr-3"><i class="fab fa-instagram"></i></a>
                     <a href="" class="btn btn-sm btn-white btn-social mr-3"><i class="fab fa-facebook-f"></i></a>
-                    <a href="" class="btn btn-sm btn-white btn-social"><i class="fab fa-whatsapp"></i></a>
+                    
+                    <a href="#" id="btnWhatsApp" target="_blank" class="btn btn-sm btn-white btn-social"><i class="fab fa-whatsapp"></i>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -359,23 +365,9 @@
         </div>
         <div class="m-body">
             <div class="container">
-                <div id="itensCarrinho" class="row mr-0 ml-0 hidden">
-                    <div class="col-12 item-carrinho">
-                        <div class="img-produto">
-                            <img src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg" alt="">
-                        </div>
-                        <div class="dados-produto">
-                            <p><b class="title-produto">Nome do produto</b></p>
-                            <p><b class="price-produto">R$ 149.90</b></p>
-                        </div>
-                            <div class="add-carrinho">
-                                        <span class="btn-menos"><i class="fas fa-minus"></i></span>
-                                        <span class="add-numero-itens">0</span>
-                                        <span class="btn-mais"><i class="fas fa-plus"></i></span>
-                                        <span class="btn btn-remove"><i class="fa fa-times"></i></span>
-                                    </div>
 
-                    </div>
+                <div id="itensCarrinho" class="row mr-0 ml-0 hidden">
+                
                 </div>
                 
                 <div id="localEntrega" class="row mr-0 ml-0 hidden">
@@ -383,7 +375,9 @@
                         <div class="form-group container-cep">
                             <label for="">CEP</label>
                             <input id="txtCEP" type="text" class="form-control">
-                            <a  class="btn btn-yellow btn-sm"><i class="fa fa-search"></i></a>
+                            <a class="btn btn-yellow btn-sm" onclick="cardapio.metodos.buscarCep()">
+                                <i class="fa fa-search"></i>
+                            </a>
                         </div>
                     </div>
 
@@ -469,18 +463,6 @@
 
                     <div class="col-12">
                         <div class="row" id="listaItensResumo">
-                            <div class="col-12 item-carrinho resumo">
-                                <div class="img-produto-resumo">
-                                    <img src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg" alt="burger-au-poivre-kit-4-pack">
-                                </div>
-                                    <div class="dados-produto">
-                                        <p class="title-produto-resumo"><b>Nome do produto:</b></p>
-                                        <p class="price-produto-resumo"><b>R$ 100,00</b></p>
-                                    </div>
-                                        <p class="quantidade-produto-resumo">
-                                            x <b>3</b>
-                                        </p>
-                            </div>
                         </div>
                     </div>
                    
@@ -496,11 +478,9 @@
                         </div>
                         <div class="dados-produto">
                             <p class="texto-endereco">
-                                <b id="resumoEndereco">Rua teste, n 200, Bairro testo</b>
+                                <b id="resumoEndereco"></b>
                             </p>
-                            <p class="cidade-endereco" id="cidadeEndereco">
-                                Goiânia-GO / 74670-010
-                            </p>
+                            <p class="cidade-endereco" id="cidadeEndereco"></p>
                         </div>
 
                     </div>
@@ -514,22 +494,22 @@
                 <div class="container-total text-right mb-4">
                     <p class="mb-0">
                         <span>Subtotal</span>
-                        <span id="lblSubtotal">R$ 95,00</span>
+                        <span id="lblSubtotal">R$ 0,00</span>
                     </p>
                     <p class="mb-0 texto-entrega">
                         <span><i class="fas fa-motorcycle"></i>  Entrega:</span>
-                        <span id="lblValorEntrega"> + R$ 5,00</span>
+                        <span id="lblValorEntrega"> + R$ 0,00</span>
                     </p>
                     <p class="mb-0 texto-total">
                         <span><b>Total:</b></span>
-                        <span class="valor-total" id="lblValorTotal"><b>R$ 100,00 </b></span>
+                        <span class="valor-total" ><b id="lblValorTotal">R$ 0,00 </b></span>
                     </p>
                 </div>
-                <a  class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
-                <a  class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar pedido</a>
-                <a  class="btn btn-yellow float-right hidden" id="btnEtapaResumo">Enviar pedido</a>
+                <a onclick="cardapio.metodos.carregarEndereco()" class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
+                <a onclick="cardapio.metodos.resumoPedido()" class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar pedido</a>
+                <a href="#" class="btn btn-yellow float-right hidden" id="btnEtapaResumo" target="_blank">Enviar pedido</a>
 
-                <a  class="btn btn-white float-right hidden" id="btnVoltar">Voltar</a>
+                <a onclick="cardapio.metodos.voltarEtapa()" class="btn btn-white float-right hidden mr-2" id="btnVoltar">Voltar</a>
             </div>
         </div>
     </div>
